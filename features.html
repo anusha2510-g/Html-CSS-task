@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clearwave - Built for Clarity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f1f7f5;
+            --text-main: #111a16;
+            --text-muted: #52635a;
+            --accent-green: #115335;
+            --accent-light-green: #e1ede8;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- Header Section --- */
+        .header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .badge {
+            background-color: var(--accent-light-green);
+            color: var(--accent-green);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .header h1 span {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-green);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* --- Feature Section Layout --- */
+        .feature-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+            margin-bottom: 120px;
+        }
+
+        .feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .feature-text {
+            flex: 1;
+            max-width: 480px;
+        }
+
+        .feature-tag {
+            color: var(--accent-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .feature-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .feature-text p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Custom Checkmark svg */
+        .feature-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23115335'%3E%3Cpath fill-rule='evenodd' d='M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .feature-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* --- Dashboard/Card Mockups CSS --- */
+        .mockup-canvas {
+            background-color: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+
+        .card-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .card-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .card-progress {
+            height: 4px;
+            background-color: var(--accent-light-green);
+            border-radius: 2px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .card-progress .fill {
+            height: 100%;
+            background-color: var(--accent-green);
+            width: 70%;
+        }
+
+        .list-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 16px;
+        }
+
+        .list-card-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background-color: #f8fbf9;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .list-item:last-child { margin-bottom: 0; }
+
+        .status-tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .status-tag.done { background-color: #e2f7ed; color: #117343; }
+        .status-tag.active { background-color: #e3f2fd; color: #0d47a1; }
+        .status-tag.paused { background-color: #f5f5f5; color: #616161; }
+        .status-tag.open { background-color: #fff3e0; color: #e65100; }
+
+        /* --- Stats Section --- */
+        .stats-section {
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding-top: 60px;
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-line {
+            width: 24px;
+            height: 2px;
+            background-color: var(--accent-green);
+            margin-bottom: 16px;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .stat-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Responsive Queries --- */
+        @media (max-width: 768px) {
+            .feature-row, .feature-row.reverse {
+                flex-direction: column;
+                gap: 40px;
+                margin-bottom: 80px;
+            }
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <span class="badge">Platform Features</span>
+        <h1>Built for <span>clarity</span><br>at every scale</h1>
+        <p>Every feature is designed to reduce friction and surface what matters. No bloat, no configuration maze.</p>
+    </header>
+
+    <section class="feature-row">
+        <div class="feature-text">
+            <span class="feature-tag">01 — Unified Dashboard</span>
+            <h2>Every metric, one calm surface</h2>
+            <p>Pull data from any source into a single, composable view. Share live dashboards with stakeholders — no exports, no screenshots.</p>
+            <ul class="feature-list">
+                <li>Drag-and-drop widget builder</li>
+                <li>Real-time data sync across all sources</li>
+                <li>Role-based sharing with granular permissions</li>
+            </ul>
+        </div>
+        <div class="feature-visual">
+            <div class="mockup-canvas">
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-label">Monthly Revenue</div>
+                        <div class="card-value">$84.2k</div>
+                        <div class="card-progress"><div class="fill"></div></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Active Users</div>
+                        <div class="card-value">12,481</div>
+                        <div class="card-progress"><div class="fill" style="width: 85%;"></div></div>
+                    </div>
+                </div>
+                <div class="list-card">
+                    <div class="list-card-title">Recent Activity</div>
+                    <div class="list-item">
+                        <span>Q3 Report synced</span>
+                        <span class="status-tag done">Done</span>
+                    </div>
+                    <div class="list-item">
+                        <span>Team review pending</span>
+                        <span class="status-tag active">Active</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-row reverse">
+        <div class="feature-text">
+            <span class="feature-tag">02 — Automation</span>
+            <h2>Routines that run themselves</h2>
+            <p>Build automation flows with natural language. Clearwave understands your intent and suggests the next step — no flowchart diagrams needed.</p>
+            <ul class="feature-list">
+                <li>Natural language automation builder</li>
+                <li>500+ pre-built trigger templates</li>
+                <li>Full audit trail for every action</li>
+            </ul>
+        </div>
+        <div class="feature-visual">
+            <div class="mockup-canvas">
+                <div class="list-card" style="margin-bottom: 16px;">
+                    <div class="list-item">
+                        <span>Weekly digest → Slack</span>
+                        <span class="status-tag done">Running</span>
+                    </div>
+                    <div class="list-item">
+                        <span>Lead scored → Notify sales</span>
+                        <span class="status-tag done">Running</span>
+                    </div>
+                    <div class="list-item">
+                        <span>Invoice due → Alert CFO</span>
+                        <span class="status-tag active">Active</span>
+                    </div>
+                    <div class="list-item">
+                        <span>Report sync → Drive</span>
+                        <span class="status-tag paused">Paused</span>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-label">Hours Saved This Month</div>
+                        <div class="card-value">148h</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Flows</div>
+                        <div class="card-value">24</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-row">
+        <div class="feature-text">
+            <span class="feature-tag">03 — Team Collaboration</span>
+            <h2>Comments, context, and clarity</h2>
+            <p>Annotate anything, assign tasks inline, and resolve conversations without switching tabs. The work and the discussion stay together.</p>
+            <ul class="feature-list">
+                <li>Inline comments on any data point</li>
+                <li>Threaded task assignments</li>
+                <li>Real-time presence and live cursors</li>
+            </ul>
+        </div>
+        <div class="feature-visual">
+            <div class="mockup-canvas">
+                <div class="grid-2" style="margin-bottom: 16px;">
+                    <div class="card">
+                        <div class="card-label">Online Now</div>
+                        <div class="card-value" style="font-size: 1.1rem; display: flex; gap: 4px; margin-top: 4px;">
+                            <span style="background:#115335; color:white; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.6rem;">A</span>
+                            <span style="background:#2e7d32; color:white; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.6rem;">K</span>
+                            <span style="background:#1565c0; color:white; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.6rem;">M</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Open Tasks</div>
+                        <div class="card-value">37</div>
+                    </div>
+                </div>
+                <div class="list-card">
+                    <div class="list-card-title">Recent Comments</div>
+                    <div class="list-item">
+                        <span>Alex → Q3 chart updated</span>
+                        <span class="status-tag done">Resolved</span>
+                    </div>
+                    <div class="list-item">
+                        <span>Kim → Review needed</span>
+                        <span class="status-tag open">Open</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="stats-section">
+        <div class="stat-item">
+            <div class="stat-line"></div>
+            <div class="stat-number">17k+</div>
+            <div class="stat-label">Teams Worldwide</div>
+            <div class="stat-sub">Across 110+ countries</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-line"></div>
+            <div class="stat-number">11%</div>
+            <div class="stat-label">Avg. Productivity Gain</div>
+            <div class="stat-sub">Measured in first 30 days</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-line"></div>
+            <div class="stat-number">34.3%</div>
+            <div class="stat-label">Uptime SLA</div>
+            <div class="stat-sub">Guaranteed and monitored</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-line"></div>
+            <div class="stat-number">6h</div>
+            <div class="stat-label">Saved Per Team Weekly</div>
+            <div class="stat-sub">On average across all plans</div>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>
